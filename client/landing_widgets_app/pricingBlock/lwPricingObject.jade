@@ -1,0 +1,8 @@
+.head
+    .price-container
+        .price {{priceStr || price + '$'}}
+    .body
+        h4 {{title}}
+        p(ng-show="headline") {{headline}}
+    
+.content(ng-transclude)

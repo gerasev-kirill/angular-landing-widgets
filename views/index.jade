@@ -5,6 +5,7 @@ block app_js
     <script src="/client/landing_widgets_app/module.js"></script>
     <script src="/client/landing_widgets_app/aboutMonitorSlider/directives.js"></script>
     <script src="/client/landing_widgets_app/featuresBlock/directives.js"></script>
+    <script src="/client/landing_widgets_app/pricingBlock/directives.js"></script>
     <script src="/client/index_app/app.js"></script>
     <!-- end auto template tags -->
 
@@ -12,9 +13,60 @@ block app_js
 block body
     br
     div.text-center(ng-controller="Ctrl")
-        
+        //lw-pricing-block.lg-3-col.md-3-col.sm-1-col.xs-1-col
+            lw-pricing-object.danger(title="Hello", price="0", headline="hello headline")
+                ul
+                    li 
+                        p 
+                            b 30 DAY 
+                            | trial
+                    li 
+                        p 
+                            b NO 
+                            | support
+                    li 
+                        p 
+                            b NO 
+                            | update
+                    li 
+                        p 
+                            b 1 USER 
+                            | only
+                .btn.btn-danger-outline Buy now
+                
+            lw-pricing-object.gray-dark(title="Hello", price="20", headline="hello headline")
+                ul
+                    li 
+                        p 
+                            b UNLIMITED 
+                            | use
+                    li 
+                        p 
+                            b FREE 
+                            | support
+                    li 
+                        p 
+                            b FREE 
+                            | update
+                    li 
+                        p 
+                            b UP TO 10 USER 
+                            | only
+                .btn.btn-gray-outline Buy now
+            lw-pricing-object.primary(title="Hello", price="120", headline="hello headline")
+                ul
+                    li 
+                        p Hello 
+                            b you
+                    li 
+                        p Hello 
+                            b you 2
+                    li 
+                        p Hello 
+                            b you 3
+                .btn.btn-primary-outline Buy now
         //lw-about-monitor-slider(slides="slides", hide-indicators="true")
-        lw-features-block.lg-5-col.md-4-col.sm-2-col.xs-1-col(headline="hello Headline")
+        //lw-features-block.lg-5-col.md-4-col.sm-2-col.xs-1-col(headline="hello Headline")
             each value in [1,2,3,4,5,6,7]
                 lw-features-object(img-class="glyphicon glyphicon-camera")
                     h4 Responsive design

@@ -1,0 +1,173 @@
+
+lw-pricing-block{
+    .clearfix();
+    ._col(@name, @col, @screen-size){
+        &.@{name}-@{col}-col{
+            lw-pricing-object{
+                position: relative;
+                min-height: 1px;
+                padding-left: @grid-gutter-width/2;
+                padding-right: @grid-gutter-width/2;
+                float: left;
+                & when  (@screen-size = @screen-lg){
+                    @media(min-width: @screen-size){
+                        width: 100% / @col;
+                    }
+                }
+                & when (@screen-size < @screen-lg){
+                    @media(max-width: @screen-size){
+                        width: 100% / @col;
+                    }
+                }
+            }
+        }
+    }
+    ._col(lg, 1, @screen-lg);
+    ._col(lg, 2, @screen-lg);
+    ._col(lg, 3, @screen-lg);
+    ._col(lg, 4, @screen-lg);
+    ._col(lg, 5, @screen-lg);
+
+    ._col(md, 1, @screen-md-max);
+    ._col(md, 2, @screen-md-max);
+    ._col(md, 3, @screen-md-max);
+    ._col(md, 4, @screen-md-max);
+    ._col(md, 5, @screen-md-max);
+
+    ._col(sm, 1, @screen-sm-max);
+    ._col(sm, 2, @screen-sm-max);
+    ._col(sm, 3, @screen-sm-max);
+
+    ._col(xs, 1, @screen-xs-max);
+    ._col(xs, 2, @screen-xs-max);
+    ._col(xs, 3, @screen-xs-max);
+    .title-block{
+        padding: 7px;
+        border-bottom: 1px solid darken(@brand-primary, 10%);
+        margin-bottom: 2em;
+        @media(min-width: @screen-md){
+            margin-right:25%;
+            margin-left:25%;
+        }
+        @media(max-width: @screen-md){
+            margin-right:10%;
+            margin-left:10%;
+        }
+        h4{
+            font-weight:bold;
+        }
+    }
+}
+
+
+
+
+lw-pricing-object{
+    @price-size: 50px;
+    transition: all 0.3s cubic-bezier(0, 0, 0.2, 1);
+    display: block;
+    width: 100%;
+    margin-bottom: @grid-gutter-width/2;
+    ._head(@color){
+        background-color: @color;
+        border-bottom: 5px solid darken(@color, 10%);
+        color: contrast(@color);
+        padding: @price-size/5;
+        border-top-left-radius: @price-size/5;
+        border-top-right-radius: @price-size/4;
+
+        .price-container{
+            display: table-cell;
+            vertical-align: top;
+            height: @price-size;
+            width: @price-size;
+            padding-right: @price-size/5;
+            vertical-align: middle;
+            .price{
+                display: block;
+                @c: contrast(@color);
+                height: @price-size;
+                width: @price-size;
+                background-color: @c;
+                color: contrast(@c);
+                border: none;
+                border-radius: 50%;
+                line-height: @price-size;
+                font-size: @price-size/3;
+                font-weight: bold;
+            }
+        }
+        .body{
+            display: table-cell;
+            vertical-align: top;
+            text-align: left;
+            vertical-align: middle;
+            p{
+                margin-bottom: 0px;
+            }
+        }
+    }
+    .content{
+        background-color: @body-bg;
+        border-left: 1px solid darken(@body-bg, 15%);
+        border-right: 1px solid darken(@body-bg, 15%);
+        border-bottom: 1px solid darken(@body-bg, 15%);
+        border-bottom-left-radius: @price-size/5;
+        border-bottom-right-radius: @price-size/4;
+        padding: @price-size/5;
+        padding-top: 0px;
+    }
+    .head{
+        #default-animation;
+        ._head(darken(@btn-default-bg, 10%));
+    }
+    ul{
+        list-style: none;
+        padding-left: 0px;
+        text-align: center;
+        font-size: 1.1em;
+        margin: 0px;
+        li{
+            p{
+                padding-top: @price-size/5;
+                padding-bottom: @price-size/5;
+                margin:0px;
+            }
+            &:not(:last-child):after{
+                display: block;
+                content: '';
+                height: 1px;
+                background: linear-gradient(to left, @body-bg, darken(@body-bg, 10%), @body-bg);
+            }
+        }
+    }
+    &:hover{
+        transform: scaleY(1.02);
+    }
+    //
+    &.primary{
+        .head{
+            ._head(@brand-primary);
+        }
+    }
+    &.success{
+        .head{
+            ._head(@brand-success);
+        }
+    }
+    &.danger{
+        .head{
+            ._head(@brand-danger);
+        }
+    }
+    &.warning{
+        .head{
+            ._head(@brand-warning);
+        }
+    }
+    &.gray-dark{
+        .head{
+            ._head(@gray-dark);
+        }
+    }
+}
