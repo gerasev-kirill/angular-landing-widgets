@@ -1,4 +1,4 @@
-angular.module 'IndexApp', ['gettext', 'ui.bootstrap','ui.gettext.langPicker', 'ui.router']
+angular.module 'IndexApp', ['gettext', 'ui.bootstrap','ui.gettext.langPicker', 'ui.router', 'ui.landingWidgets']
 
 .run (gettextCatalog, $langPickerConf)->
     $langPickerConf.setLanguageList( {
@@ -13,6 +13,13 @@ angular.module 'IndexApp', ['gettext', 'ui.bootstrap','ui.gettext.langPicker', '
          $scope.count = 1
          $scope.$langPickerConf = $langPickerConf
          $scope.LANG = ''
+         $scope.slides = []
+         for i in [1,2,3,4]
+             $scope.slides.push({
+                 image: 'http://lorempixel.com/'+(900+i)+'/400',
+                 text: 'Bla-bla '+i
+                 })
+
          $scope.$watch '$langPickerConf.currentLang',
             (lang)->
                 $scope.LANG = lang

@@ -1,5 +1,5 @@
 module.exports = (grunt)->
-	index_app = ['helpers_app', 'index_app']
+	index_app = ['helpers_app', 'landing_widgets_app','index_app']
 
 	generateFilePattern = (dirs)->
 		list=[]
@@ -18,12 +18,11 @@ module.exports = (grunt)->
 		replace: {
 			options:{},
 			files:{
-				expand: true,
-				cwd: 'client',
-				src: ['**/*.js'],
-				dest: 'client',
-				ext: '.js'
-			}
+					expand: true,
+					cwd: 'client',
+					src: ['**/*.js', '**/*.html'],
+					dest: 'client',
+				}
 		},
 		tags: {
 			build: {
@@ -124,7 +123,7 @@ module.exports = (grunt)->
 				}
 			}
 		},
-		
+
 		nggettext_extract: {
 			pot: {
 				files: {
@@ -149,7 +148,7 @@ module.exports = (grunt)->
 				]
 			}
 		},
-		
+
 	}
 	grunt.loadNpmTasks 'grunt-contrib-connect'
 	grunt.loadNpmTasks 'grunt-script-link-tags'
@@ -160,11 +159,11 @@ module.exports = (grunt)->
 	grunt.loadNpmTasks 'grunt-simple-watch'
 	grunt.loadNpmTasks 'grunt-less-imports'
 	grunt.loadNpmTasks 'grunt-contrib-pug'
-	
+
 	grunt.loadNpmTasks 'grunt-angular-gettext'
 	grunt.registerTask 'po', ['pug:views', 'pug:client', 'nggettext_extract']
 	grunt.registerTask 'po-compile', 'nggettext_compile:lazy'
-	
+
 
 	grunt.registerTask 'default', 'simple-watch'
 	grunt.registerTask 'index_app', ['less_imports', 'less:prod', 'replace', 'concat:index_app']

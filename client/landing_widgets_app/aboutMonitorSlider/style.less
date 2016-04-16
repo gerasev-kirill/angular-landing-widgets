@@ -1,0 +1,62 @@
+lw-about-monitor-slider{
+    display: block;
+    text-align: center;
+    ._carousel(@padding){
+        transition: all 0.4s linear;
+        padding: @padding;
+        background-color: #080808;
+        border-top-left-radius: @padding/2;
+        border-top-right-radius: @padding/2;
+        .carousel-control{
+            &.right{
+                border-top-right-radius: @padding/2;
+            }
+            &.left{
+                border-top-left-radius: @padding/2;
+            }
+        }
+    }
+    ._display-bottom(@padding){
+        transition: all 0.4s linear;
+        height: @padding*2;
+        background-color: #dddddd;
+        background: linear-gradient(-135deg, #E8E8E8, #b2b2b2);
+        border-bottom-left-radius: @padding/2;
+        border-bottom-right-radius: @padding/2;
+    }
+    .hide-indicators{
+        .carousel-indicators{
+            display: none;
+        }
+    }
+    .hide-controls{
+        .carousel-control{
+            display: none;
+        }
+    }
+    .carousel-caption{
+        text-shadow: 0 1px 2px black;
+        color: white;
+    }
+    .carousel{
+        ._carousel(40px);
+    }
+    .display-bottom{
+        ._display-bottom(40px);
+    }
+    &.sm{
+        .carousel{
+            ._carousel(20px);
+        }
+        .display-bottom{
+            ._display-bottom(20px);
+        }
+        .display-stem{
+            transition: all 0.4s linear;
+            height: 70px;
+        }
+    }
+    @media(max-width: @screen-sm){
+        .sm;
+    }
+}

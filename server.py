@@ -14,6 +14,9 @@ class RequestHandler(SimpleHTTPServer.SimpleHTTPRequestHandler):
             return json.load(f)
 
     def render_jade(self, orig_path):
+        print orig_path, os.path.isfile(orig_path)
+        if os.path.isfile(orig_path) and 'views' not in orig_path:
+            return orig_path
         jade_template_path = "%s.jade" % os.path.splitext(orig_path)[0]
         with open(jade_template_path) as f:
             src = f.read()

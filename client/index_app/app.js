@@ -1,14 +1,24 @@
 (function() {
-  angular.module('IndexApp', ['gettext', 'ui.bootstrap', 'ui.gettext.langPicker', 'ui.router']).run(function(gettextCatalog, $langPickerConf) {
+  angular.module('IndexApp', ['gettext', 'ui.bootstrap', 'ui.gettext.langPicker', 'ui.router', 'ui.landingWidgets']).run(function(gettextCatalog, $langPickerConf) {
     $langPickerConf.setLanguageList({
       ru: 'Русский',
       en: 'English'
     });
     return $langPickerConf.setLanguageRemoteUrl("/client/languages/");
   }).controller('Ctrl', function($scope, $langPickerConf) {
+    var i, j, len, ref;
     $scope.count = 1;
     $scope.$langPickerConf = $langPickerConf;
     $scope.LANG = '';
+    $scope.slides = [];
+    ref = [1, 2, 3, 4];
+    for (j = 0, len = ref.length; j < len; j++) {
+      i = ref[j];
+      $scope.slides.push({
+        image: 'http://lorempixel.com/' + (900 + i) + '/400',
+        text: 'Bla-bla ' + i
+      });
+    }
     return $scope.$watch('$langPickerConf.currentLang', function(lang) {
       return $scope.LANG = lang;
     });
