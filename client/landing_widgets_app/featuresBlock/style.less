@@ -1,0 +1,106 @@
+
+lw-features-block{
+    .clearfix();
+    ._col(@name, @col, @screen-size){
+        &.@{name}-@{col}-col{
+            lw-features-object{
+                position: relative;
+                min-height: 1px;
+                padding-left: @grid-gutter-width/2;
+                padding-right: @grid-gutter-width/2;
+                float: left;
+                & when  (@screen-size = @screen-lg){
+                    @media(min-width: @screen-size){
+                        width: 100% / @col;
+                    }
+                }
+                & when (@screen-size < @screen-lg){
+                    @media(max-width: @screen-size){
+                        width: 100% / @col;
+                    }
+                }
+            }
+        }
+    }
+    ._col(lg, 1, @screen-lg);
+    ._col(lg, 2, @screen-lg);
+    ._col(lg, 3, @screen-lg);
+    ._col(lg, 4, @screen-lg);
+    ._col(lg, 5, @screen-lg);
+
+    ._col(md, 1, @screen-md-max);
+    ._col(md, 2, @screen-md-max);
+    ._col(md, 3, @screen-md-max);
+    ._col(md, 4, @screen-md-max);
+    ._col(md, 5, @screen-md-max);
+
+    ._col(sm, 1, @screen-sm-max);
+    ._col(sm, 2, @screen-sm-max);
+    ._col(sm, 3, @screen-sm-max);
+
+    ._col(xs, 1, @screen-xs-max);
+    ._col(xs, 2, @screen-xs-max);
+    ._col(xs, 3, @screen-xs-max);
+    .title-block{
+        padding: 7px;
+        border-bottom: 1px solid darken(@brand-primary, 10%);
+        margin-bottom: 2em;
+        @media(min-width: @screen-md){
+            margin-right:25%;
+            margin-left:25%;
+        }
+        @media(max-width: @screen-md){
+            margin-right:10%;
+            margin-left:10%;
+        }
+        h4{
+            font-weight:bold;
+        }
+    }
+}
+
+
+
+lw-features-object{
+    @img-size: 50px;
+    @border-size: 2px;
+    #default-animation;
+    display: block;
+    .img{
+        display: table-cell;
+        vertical-align: top;
+        height: @img-size;
+        width: @img-size;
+        padding-right: @img-size/5;
+        padding-top: @img-size/4;
+        .circle{
+            #default-animation;
+            height: @img-size;
+            width: @img-size;
+            color: @brand-primary;
+            border: @border-size solid @brand-primary;
+            border-radius: 50%;
+            span{
+                line-height: @img-size - @border-size*3;
+                font-size: @img-size/2;
+            }
+        }
+    }
+    .body{
+        display: table-cell;
+        vertical-align: top;
+        text-align: left;
+        padding-bottom: @img-size/2;
+        h4{
+            font-weight: bold;
+            margin-top: @border-size*2;
+        }
+    }
+    &:hover{
+        cursor: default;
+        .circle{
+            background-color: @brand-primary;
+            color: contrast(@brand-primary);
+        }
+    }
+}

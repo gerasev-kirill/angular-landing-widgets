@@ -43,9 +43,13 @@ module.exports = (grunt)->
 				}
 		},
 		watch:{
-			scripts:{
-				files: ['client/*_app/**/*.js', 'client/*_app/**/*.less' ],
-				tasks: ['replace', 'less_imports', 'tags']
+			js_html:{
+					files: ['client/*_app/**/*.js', 'client/*_app/**/*.html' ],
+					tasks: ['replace', 'tags']
+			},
+			css:{
+					files: ['client/*_app/**/*.less', 'client/*.less' ],
+					tasks: ['less_imports', 'less:prod']
 			}
 		},
 		coffee:{
@@ -90,12 +94,12 @@ module.exports = (grunt)->
 		less:{
 			prod:{
 				options:{
-					compress:true
+					#compress:true
 				},
 				files:{
-					'client/css/style.css':'client/style.less',
-					'client/css/style-admin.css':'client/style-admin.less',
-					'client/css/style-moderator.css':'client/style-moderator.less'
+					'client/style.css':'client/style.less',
+					#'client/css/style-admin.css':'client/style-admin.less',
+					#'client/css/style-moderator.css':'client/style-moderator.less'
 				}
 			}
 		}
