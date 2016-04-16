@@ -1,0 +1,6 @@
+{
+    
+    "$isDevPlatform": true,
+    "$PLATFORM":"dev",
+    "$LOCALE":"en"
+}

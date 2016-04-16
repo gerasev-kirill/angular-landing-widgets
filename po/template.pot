@@ -1,0 +1,31 @@
+msgid ""
+msgstr ""
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Project-Id-Version: \n"
+
+#: views/index.html:3
+msgid "First tab"
+msgstr ""
+
+#: client/index_app/hello.html:1
+msgid "Hello #1 tab!"
+msgstr ""
+
+#: client/index_app/hello2.html:1
+msgid "Hello 2 tab! My name is Vova=)"
+msgstr ""
+
+#: views/index.html:3
+msgid "One boat"
+msgid_plural "{{$count}} boats"
+msgstr[0] ""
+msgstr[1] ""
+
+#: views/index.html:3
+msgid "Second tab"
+msgstr ""
+
+#: views/index.html:3
+msgid "hello!"
+msgstr ""

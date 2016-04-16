@@ -1,0 +1,28 @@
+html
+	head
+		meta(http-equiv="Content-Type", content="text/html; charset=utf-8")
+		base(href="/")
+		// bower:js
+		script(src='/bower_components/angular/angular.js')
+		script(src='/bower_components/angular-bootstrap/ui-bootstrap-tpls.js')
+		script(src='/bower_components/angular-ui-router/release/angular-ui-router.js')
+		script(src='/bower_components/angular-gettext/dist/angular-gettext.js')
+		script(src='/bower_components/ui-flags/dist/ui.flag.min.js')
+		script(src='/bower_components/ui.gettext.lang.picker/dist/ui.gettext.langPicker.min.js')
+		// endbower
+		// bower:css
+		link(rel='stylesheet', href='/bower_components/world-flags-sprite/stylesheets/flags32.css')
+		link(rel='stylesheet', href='/bower_components/world-flags-sprite/stylesheets/flags16.css')
+		// endbower
+		if $isDevPlatform
+			link(rel="stylesheet/less", type="text/css", href="/client/style.less")
+			script(src="/bower_components/less.js/dist/less.min.js")
+		
+		
+
+
+		block app_js
+
+
+	body
+		block body

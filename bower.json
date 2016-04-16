@@ -1,0 +1,43 @@
+{
+  "name": "landing_widgets",
+  "version": "1.0.0",
+  "authors": [],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular-bootstrap": "~1.3.2",
+    "bootstrap": "~3.3.6",
+    "angular-ui-router": "~0.2.18",
+    "angular-gettext": "~2.2.1",
+    "ui-flags": "https://github.com/gerasev-kirill/ui-flags.git#~0.0.4",
+    "ui.gettext.lang.picker": "https://github.com/gerasev-kirill/angular-gettext-lang-picker.git"
+  },
+  "overrides": {
+    "bootstrap": {
+      "main": [
+        "less/bootstrap.less"
+      ]
+    },
+    "jquery": {
+      "main": []
+    },
+    "world-flags-sprite": {
+      "main": [
+        "stylesheets/flags32.css",
+        "stylesheets/flags16.css"
+      ]
+    },
+    "less.js": {
+      "main": []
+    }
+  },
+  "devDependencies": {
+    "less.js": "~2.6.1"
+  }
+}
