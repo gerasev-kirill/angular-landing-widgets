@@ -1,0 +1,19 @@
+
+.title-block
+    h2 {{getTitle()}}
+    h4(ng-show="headline") {{headline}}
+    
+    
+.btn-group(ng-show="isNextPrevBtnsVisible() && showTopControls")
+    .btn.btn-primary-outline(ng-click="prev()")
+        span.glyphicon.glyphicon-menu-left
+    .btn.btn-primary-outline(ng-click="next()")
+        span.glyphicon.glyphicon-menu-right
+
+div(ng-transclude)
+
+.btn-group(ng-show="isNextPrevBtnsVisible() && !showTopControls")
+    .btn.btn-primary-outline(ng-click="prev()")
+        span.glyphicon.glyphicon-menu-left
+    .btn.btn-primary-outline(ng-click="next()")
+        span.glyphicon.glyphicon-menu-right

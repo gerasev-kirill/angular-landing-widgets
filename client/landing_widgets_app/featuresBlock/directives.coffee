@@ -37,7 +37,7 @@ angular.module 'ui.landingWidgets'
         restrict: 'E'
         transclude: true
         scope:{
-            imgUrl: '=?',
+            imgUrl: '@?',
             imgClass: '@?',
             ngDisabled: '=?'
         }

@@ -1,0 +1,199 @@
+
+lw-reviews-block{
+    .clearfix();
+    ._col(@name, @col, @screen-size){
+        &.@{name}-@{col}-col{
+            lw-reviews-object{
+                position: relative;
+                min-height: 1px;
+                padding-left: @grid-gutter-width/2;
+                padding-right: @grid-gutter-width/2;
+                float: left;
+                & when  (@screen-size = @screen-lg){
+                    @media(min-width: @screen-size){
+                        width: 100% / @col;
+                    }
+                }
+                & when (@screen-size < @screen-lg){
+                    @media(max-width: @screen-size){
+                        width: 100% / @col;
+                    }
+                }
+            }
+        }
+    }
+    ._col(lg, 1, @screen-lg);
+    ._col(lg, 2, @screen-lg);
+    ._col(lg, 3, @screen-lg);
+    ._col(lg, 4, @screen-lg);
+    ._col(lg, 5, @screen-lg);
+
+    ._col(md, 1, @screen-md-max);
+    ._col(md, 2, @screen-md-max);
+    ._col(md, 3, @screen-md-max);
+    ._col(md, 4, @screen-md-max);
+    ._col(md, 5, @screen-md-max);
+
+    ._col(sm, 1, @screen-sm-max);
+    ._col(sm, 2, @screen-sm-max);
+    ._col(sm, 3, @screen-sm-max);
+
+    ._col(xs, 1, @screen-xs-max);
+    ._col(xs, 2, @screen-xs-max);
+    ._col(xs, 3, @screen-xs-max);
+    .title-block{
+        padding: 7px;
+        border-bottom: 1px solid darken(@brand-primary, 10%);
+        margin-bottom: 2em;
+        @media(min-width: @screen-md){
+            margin-right:25%;
+            margin-left:25%;
+        }
+        @media(max-width: @screen-md){
+            margin-right:10%;
+            margin-left:10%;
+        }
+        h4{
+            font-weight:bold;
+        }
+    }
+
+    page{
+        .clearfix();
+        display: block;
+        #animation-ng-show-slide-left-right(20%);
+    }
+
+    .btn-group{
+        margin-bottom: @grid-gutter-width/1.5;
+    }
+}
+
+
+
+
+lw-reviews-object{
+    @avatar-size: 60px;
+    @triangle-right-padding: 15px;
+    display: block;
+    padding-bottom: @grid-gutter-width/2;
+
+    ._quote-bubble(@color){
+
+        display: block;
+        padding: @grid-gutter-width/2;
+        background-color: @color;
+        border: 1px solid darken(@color, 10%);
+        border-radius: @grid-gutter-width/2;
+        margin-bottom: @grid-gutter-width/2 - 1px;
+        position: relative;
+        blockquote{
+            color: contrast(@color);
+            background: data-uri('./quote.png') no-repeat 0 0;
+            padding: @grid-gutter-width/4;
+            padding-left: image-width('./quote.png') + @grid-gutter-width/3;
+            margin-bottom:  @grid-gutter-width/3;
+            text-align: left;
+            border-left-width: 0px;
+            &, *{
+                color: contrast(@color)
+            }
+        }
+        &:before{
+            @s: @grid-gutter-width/2;
+            display: block;
+            content: '';
+            height: 0px;
+            width: 0px;
+            position: absolute;
+            bottom: -1*@s;
+            right: @s + @triangle-right-padding;
+            border-style: solid;
+            border-width: @s @s 0px;
+            border-color: darken(@color, 10%) transparent transparent transparent;
+        }
+        &:after{
+            @s: @grid-gutter-width/2 - 1px;
+            display: block;
+            content: '';
+            height: 0px;
+            width: 0px;
+            position: absolute;
+            bottom: -1*@s;
+            right: @s + 2px + @triangle-right-padding;
+            border-style: solid;
+            border-width: @s @s 0px;
+            border-color: @color transparent transparent transparent;
+        }
+    }
+    .quote-bubble{
+        ._quote-bubble(darken(@btn-default-bg, 5%));
+    }
+    .avatar{
+        display: table-cell;
+        float: right;
+        height: @avatar-size;
+        width: @avatar-size;
+        background-color: darken(@btn-default-bg, 5%);
+        border: @avatar-size/15 solid fade(darken(@btn-default-bg, 15%), 55%);
+        border-radius: 50%;
+    }
+    .user-info{
+        .clearfix();
+        text-align: right;
+        padding-right: @grid-gutter-width/2 + @triangle-right-padding - (@avatar-size/2 - @grid-gutter-width/2);
+        .info{
+            display: table-cell;
+            float: right;
+            padding-right: @grid-gutter-width/3;
+            h4{
+                margin-top: 10px;
+                margin-bottom: 5px;
+            }
+            a{
+                .text-primary;
+            }
+        }
+    }
+
+    ._color_style(@color){
+        .quote-bubble{
+            ._quote-bubble(@color);
+        }
+        .avatar{
+            background-color: darken(@color, 5%);
+            border-color: fade(darken(@color, 15%), 55%);
+        }
+        .user-info{
+            .info{
+                a{
+                    color: @color;
+                    &:hover{
+                        color: lighten(@color, 5%);
+                    }
+                }
+            }
+        }
+    }
+
+
+    //
+    &.primary{
+        ._color_style(@brand-primary);
+    }
+    &.warning{
+        ._color_style(@brand-warning);
+    }
+    &.danger{
+        ._color_style(@brand-danger);
+    }
+    &.info{
+        ._color_style(@brand-info);
+    }
+    &.success{
+        ._color_style(@brand-success);
+    }
+    &.gray{
+        ._color_style(lighten(@gray-dark, 25%));
+    }
+}

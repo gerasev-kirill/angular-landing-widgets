@@ -1,0 +1,11 @@
+
+.quote-bubble
+    div(ng-transclude)
+
+
+.user-info
+    img.avatar(src="{{imgUrl}}")
+    .info
+        h4 {{title}}
+        p(ng-show="headline && !ngHref") {{headline}}
+        a(ng-show="headline && ngHref", href="{{ngHref}}") {{headline}}

@@ -1,4 +1,4 @@
-angular.module 'IndexApp', ['gettext', 'ui.bootstrap','ui.gettext.langPicker', 'ui.router', 'ui.landingWidgets']
+angular.module 'IndexApp', ['gettext', 'ui.bootstrap','ui.gettext.langPicker', 'ui.router', 'ui.landingWidgets', 'ngAnimate']
 
 .run (gettextCatalog, $langPickerConf)->
     $langPickerConf.setLanguageList( {

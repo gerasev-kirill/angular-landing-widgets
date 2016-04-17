@@ -6,6 +6,7 @@ block app_js
     <script src="/client/landing_widgets_app/aboutMonitorSlider/directives.js"></script>
     <script src="/client/landing_widgets_app/featuresBlock/directives.js"></script>
     <script src="/client/landing_widgets_app/pricingBlock/directives.js"></script>
+    <script src="/client/landing_widgets_app/reviewsBlock/directives.js"></script>
     <script src="/client/index_app/app.js"></script>
     <!-- end auto template tags -->
 
@@ -13,6 +14,25 @@ block app_js
 block body
     br
     div.text-center(ng-controller="Ctrl")
+        lw-reviews-block.lg-3-col.md-3-col.sm-2-col.xs-1-col(headline="People said...",
+                show-top-controls="true")
+            page(ng-show="$parent.currentPage==0")
+                lw-reviews-object(img-url="/client/avatar1.png", title="Some title",
+                    headline="Some headline", ng-href="hrllo")
+                    blockquote Sed modus munere menandri ius vero qualisque concludaturque ne vide fastidii incorrupte.
+
+                lw-reviews-object.primary(img-url="/client/avatar1.png", title="", headline="")
+                    blockquote Sed modus munere menandri ius vero qualisque concludaturque ne vide fastidii incorrupte.
+
+                lw-reviews-object.danger(img-url="/client/avatar1.png", title="", headline="Some headline", ng-href="hrllo")
+                    blockquote Sed modus munere menandri ius vero qualisque concludaturque ne vide fastidii incorrupte.
+
+            page(ng-show="$parent.currentPage==1")
+                lw-reviews-object.warning(img-url="/client/avatar1.png", title="", headline="")
+                    blockquote Sed modus munere menandri ius vero qualisque concludaturque ne vide fastidii incorrupte.
+                lw-reviews-object(img-url="/client/avatar1.png", title="", headline="")
+                    blockquote Sed modus munere menandri ius vero qualisque concludaturque ne vide fastidii incorrupte.
+                    
         //lw-pricing-block.lg-3-col.md-3-col.sm-1-col.xs-1-col
             lw-pricing-object.danger(title="Hello", price="0", headline="hello headline")
                 ul
