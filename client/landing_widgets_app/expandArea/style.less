@@ -1,0 +1,117 @@
+lw-expand-button{
+    .clearfix();
+    position: relative;
+    display: inline-block;
+    @s: @padding-base-horizontal*3.5 + @line-height-base;
+    *{
+        #default-animation;
+    }
+
+    .circle{
+        display: table-cell;
+        height: @s;
+        width: @s;
+        line-height: @s;
+        vertical-align: middle;
+        border-radius: 50%;
+        position: absolute;
+        top: 0px;
+        left: 0px;
+        border: 1px solid darken(@btn-default-bg, 10%);
+        background-color: darken(@btn-default-bg, 10%);
+        span{
+            line-height: @s - 3px;
+            color: contrast(darken(@btn-default-bg, 10%));
+        }
+    }
+    .content-wrapper{
+        display: table-cell;
+        vertical-align: middle;
+        padding-left: @s/2;
+        height: @s;
+        .content{
+            // миксина бутстрапа
+            .button-size(@padding-base-vertical; @padding-base-horizontal; @font-size-base; @line-height-base; @btn-border-radius-base);
+            padding-left: @padding-base-horizontal*2.5;
+            background-color: @body-bg;
+            border: 1px solid;
+            border-color: darken(@body-bg, 10%);
+        }
+    }
+    &:hover,&:active, &.active, &:focus{
+        cursor: pointer;
+        .circle{
+            background-color: @body-bg !important;
+            span{
+                color:  darken(@btn-default-bg, 10%) !important;
+            }
+        }
+        .content{
+            background-color: darken(@btn-default-bg, 10%);
+            border-color: darken(@btn-default-bg, 10%);
+            color: contrast(darken(@btn-default-bg, 10%));
+        }
+    }
+    &:active, &.active{
+        .circle{
+            span{
+                transform: rotate(90deg);
+            }
+        }
+    }
+
+
+
+    ._variant(@color){
+        .circle{
+            border-color: @color;
+            background-color: @color;
+            span{
+                color: contrast(@color);
+            }
+        }
+        &:hover,&:active, &.active, &:focus{
+            .circle{
+                span{
+                    color: @color !important;
+                }
+            }
+            .content{
+                background-color: @color;
+                border-color: @color;
+                color: contrast(@color);
+            }
+        }
+    }
+
+    //
+    &.primary{
+        ._variant(@brand-primary);
+    }
+    &.danger{
+        ._variant(@brand-danger);
+    }
+    &.success{
+        ._variant(@brand-success);
+    }
+    &.info{
+        ._variant(@brand-info);
+    }
+    &.warning{
+        ._variant(@brand-warning);
+    }
+    &.gray{
+        ._variant(@gray-dark);
+    }
+}
+
+
+lw-expand-area{
+    .clearfix();
+    display: block;
+    margin-bottom: @grid-gutter-width/2.5;
+    #default-animation;
+    .area{
+        #animation-ng-show-slide-top-top;
+    }
+}

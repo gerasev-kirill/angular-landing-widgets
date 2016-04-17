@@ -1,0 +1,7 @@
+
+
+lw-expand-button(ng-click="showArea = !showArea", 
+        class="{{btnClass}}", ng-class="{'active': showArea}") {{title}}
+
+.area(ng-transclude, ng-show="showArea")
+    

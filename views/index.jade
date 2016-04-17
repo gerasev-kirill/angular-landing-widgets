@@ -4,6 +4,7 @@ block app_js
     <!-- start auto template tags -->
     <script src="/client/landing_widgets_app/module.js"></script>
     <script src="/client/landing_widgets_app/aboutMonitorSlider/directives.js"></script>
+    <script src="/client/landing_widgets_app/expandArea/directives.js"></script>
     <script src="/client/landing_widgets_app/featuresBlock/directives.js"></script>
     <script src="/client/landing_widgets_app/pricingBlock/directives.js"></script>
     <script src="/client/landing_widgets_app/reviewsBlock/directives.js"></script>
@@ -13,7 +14,26 @@ block app_js
 
 block body
     br
-    div.text-center(ng-controller="Ctrl")
+    div.text-center(ng-controller="Ctrl")        
+        lw-about-monitor-slider(slides="slides", hide-indicators="true", style="display:inline-block;")
+        lw-features-block.lg-5-col.md-4-col.sm-2-col.xs-1-col(headline="hello Headline")
+            each value in [1,2,3,4,5,6,7]
+                lw-features-object(img-class="glyphicon glyphicon-camera")
+                    h4 Responsive design
+                    p Eu sit soluta antiopam, postea sanctus in an vis. Pro primis insolens recteque ne, nostrum molestie splendide sed et elitr.
+                        span= value
+                    a.text-primary(href="#") Learn more
+
+
+        lw-expand-area(title="Expand me!")
+            h1 hello
+            p you
+            b again
+            
+        lw-expand-area(title="Expand me!", btn-class="primary")
+            h1 hello
+            p you
+            b again
         lw-reviews-block.lg-3-col.md-3-col.sm-2-col.xs-1-col(headline="People said...",
                 show-top-controls="true")
             page(ng-show="$parent.currentPage==0")
@@ -33,7 +53,7 @@ block body
                 lw-reviews-object(img-url="/client/avatar1.png", title="", headline="")
                     blockquote Sed modus munere menandri ius vero qualisque concludaturque ne vide fastidii incorrupte.
                     
-        //lw-pricing-block.lg-3-col.md-3-col.sm-1-col.xs-1-col
+        lw-pricing-block.lg-3-col.md-3-col.sm-1-col.xs-1-col
             lw-pricing-object.danger(title="Hello", price="0", headline="hello headline")
                 ul
                     li 
@@ -85,30 +105,7 @@ block body
                         p Hello 
                             b you 3
                 .btn.btn-primary-outline Buy now
-        //lw-about-monitor-slider(slides="slides", hide-indicators="true")
-        //lw-features-block.lg-5-col.md-4-col.sm-2-col.xs-1-col(headline="hello Headline")
-            each value in [1,2,3,4,5,6,7]
-                lw-features-object(img-class="glyphicon glyphicon-camera")
-                    h4 Responsive design
-                    p Eu sit soluta antiopam, postea sanctus in an vis. Pro primis insolens recteque ne, nostrum molestie splendide sed et elitr.
-                        span= value
-                    a.text-primary(href="#") Learn more
 
-        lang-picker
-        br
-        input(type="number", ng-model="count")
-        
-        div(style="background: #95AEFF; border-radius:0.5em; padding:10px; margin-top:1em;")
-            button.btn.btn-default(type="button", 
-                ng-click="isCollapsed = !isCollapsed", translate) hello!
-            div(uib-collapse="isCollapsed", style="margin:3px;")
-                .well.well-lg(translate, translate-n="count", translate-plural="{{$count}} boats") One boat
-            .btn-group
-                a.btn.btn-danger(href, ui-sref="app.home({lang:LANG})",
-                    ui-sref-active="active", translate) First tab
-                a.btn.btn-danger(href, ui-sref="app.home2({lang:LANG})",
-                    ui-sref-active="active", translate) Second tab
-            div(style="background: white; border-radius:0.5em; padding:10px;", ui-view='')
 
         if $isDevPlatform
             h4.text-primary [debug]: dev 
