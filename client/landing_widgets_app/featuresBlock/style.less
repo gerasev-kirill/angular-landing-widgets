@@ -1,3 +1,12 @@
+// основной цвет
+@lwFeaturesBlock-color: @brand-primary;
+// размер круга внутри которого находится иконка у lw-features-object
+@lwFeaturesBlock-img-size: 50px;
+// толщина круга у lw-features-object
+@lwFeaturesBlock-border-size: 2px;
+
+
+
 
 lw-features-block{
     .clearfix();
@@ -41,9 +50,10 @@ lw-features-block{
     ._col(xs, 1, @screen-xs-max);
     ._col(xs, 2, @screen-xs-max);
     ._col(xs, 3, @screen-xs-max);
+
     .title-block{
         padding: 7px;
-        border-bottom: 1px solid darken(@brand-primary, 10%);
+        border-bottom: 1px solid darken(@lwFeaturesBlock-color, 10%);
         margin-bottom: 2em;
         @media(min-width: @screen-md){
             margin-right:25%;
@@ -57,32 +67,57 @@ lw-features-block{
             font-weight:bold;
         }
     }
+
+    //
+    ._variant(@color){
+        .title-block{
+            border-color: darken(@color, 10%);
+        }
+        lw-features-object{
+            .circle{
+                border-color: @color;
+                color: @color;
+            }
+            &:hover{
+                .circle{
+                    background-color: @color;
+                    color: contrast(@color);
+                }
+            }
+        }
+    }
+    //
+    &.danger{
+        ._variant(@brand-danger);
+    }
+
 }
 
 
 
+
 lw-features-object{
-    @img-size: 50px;
-    @border-size: 2px;
     #default-animation;
     display: block;
+
     .img{
         display: table-cell;
         vertical-align: top;
-        height: @img-size;
-        width: @img-size;
-        padding-right: @img-size/5;
-        padding-top: @img-size/4;
+        height: @lwFeaturesBlock-img-size;
+        width: @lwFeaturesBlock-img-size;
+        padding-right: @lwFeaturesBlock-img-size/5;
+        padding-top: @lwFeaturesBlock-img-size/4;
         .circle{
             #default-animation;
-            height: @img-size;
-            width: @img-size;
-            color: @brand-primary;
-            border: @border-size solid @brand-primary;
+            height: @lwFeaturesBlock-img-size;
+            width: @lwFeaturesBlock-img-size;
+            color: @lwFeaturesBlock-color;
+            border: @lwFeaturesBlock-border-size solid @lwFeaturesBlock-color;
             border-radius: 50%;
+            text-align: center;
             span{
-                line-height: @img-size - @border-size*3;
-                font-size: @img-size/2;
+                line-height: @lwFeaturesBlock-img-size - @lwFeaturesBlock-border-size*3;
+                font-size: @lwFeaturesBlock-img-size/2;
             }
         }
     }
@@ -90,17 +125,17 @@ lw-features-object{
         display: table-cell;
         vertical-align: top;
         text-align: left;
-        padding-bottom: @img-size/2;
+        padding-bottom: @lwFeaturesBlock-img-size/2;
         h4{
             font-weight: bold;
-            margin-top: @border-size*2;
+            margin-top: @lwFeaturesBlock-border-size*2;
         }
     }
     &:hover{
         cursor: default;
         .circle{
-            background-color: @brand-primary;
-            color: contrast(@brand-primary);
+            background-color: @lwFeaturesBlock-color;
+            color: contrast(@lwFeaturesBlock-color);
         }
     }
 }

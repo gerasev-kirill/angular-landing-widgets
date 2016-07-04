@@ -6,6 +6,8 @@ block app_js
     <script src="/client/landing_widgets_app/aboutMonitorSlider/directives.js"></script>
     <script src="/client/landing_widgets_app/expandArea/directives.js"></script>
     <script src="/client/landing_widgets_app/featuresBlock/directives.js"></script>
+    <script src="/client/landing_widgets_app/googleMaps/directives.js"></script>
+    <script src="/client/landing_widgets_app/googleMaps/services.js"></script>
     <script src="/client/landing_widgets_app/pricingBlock/directives.js"></script>
     <script src="/client/landing_widgets_app/reviewsBlock/directives.js"></script>
     <script src="/client/index_app/app.js"></script>
@@ -14,7 +16,7 @@ block app_js
 
 block body
     br
-    div.text-center(ng-controller="Ctrl")        
+    div.text-center(ng-controller="Ctrl")    
         lw-about-monitor-slider(slides="slides", hide-indicators="true", style="display:inline-block;")
         lw-features-block.lg-5-col.md-4-col.sm-2-col.xs-1-col(headline="hello Headline")
             each value in [1,2,3,4,5,6,7]
@@ -23,7 +25,8 @@ block body
                     p Eu sit soluta antiopam, postea sanctus in an vis. Pro primis insolens recteque ne, nostrum molestie splendide sed et elitr.
                         span= value
                     a.text-primary(href="#") Learn more
-
+                    
+        lw-googlemap-marker(marker="marker", title="Hello You!", style="height:25em;")
 
         lw-expand-area(title="Expand me!")
             h1 hello

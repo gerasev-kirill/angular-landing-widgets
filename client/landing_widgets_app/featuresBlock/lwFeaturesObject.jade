@@ -1,6 +1,6 @@
 .img
-    .circle
-        span(ng-show="imgClass", class="{{imgClass}}")
-        img(ng-show="imgUrl", src="{{imgUrl}}")
+    .circle(ng-show="imgClass")
+        span(class="{{imgClass}}")
+    img(ng-show="imgUrl", src="{{imgUrl}}")
 
 .body(ng-transclude)

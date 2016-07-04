@@ -5,7 +5,9 @@
   "scripts": {
     "grunt": "grunt"
   },
-  "dependencies": {},
+  "dependencies": {
+    "grunt": "^0.4.5"
+  },
   "devDependencies": {
     "grunt-angular-gettext": "^2.1.13",
     "grunt-contrib-concat": "^1.0.0",

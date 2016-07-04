@@ -4,7 +4,11 @@
 
 
 .user-info
-    img.avatar(src="{{imgUrl}}")
+    uic-img-thumb.avatar(file="imgFile", size="70", 
+                  default-url="/client/avatar.png",
+                  force-lang="forceLang",
+                  ng-if="!imgUrl")
+    img.avatar(ng-src="{{imgUrl}}", ng-if="imgUrl")
     .info
         h4 {{title}}
         p(ng-show="headline && !ngHref") {{headline}}

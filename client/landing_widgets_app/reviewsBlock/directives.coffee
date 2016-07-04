@@ -55,6 +55,8 @@ angular.module 'ui.landingWidgets'
             title: '@',
             ngHref: '@?',
             headline: '@?',
+            imgFile: '=?',
+            forceLang: '=?',
             ngDisabled: '=?'
         }
         controller: ($scope) ->

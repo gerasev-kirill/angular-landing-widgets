@@ -37,7 +37,7 @@ module.exports = (grunt)->
 		},
 		less_imports:{
 				options:{},
-				so:{
+				client:{
 					src: [ 'client/*_app/**/style.less'],
 					dest: 'client/auto_imports.less'
 				}
@@ -170,4 +170,5 @@ module.exports = (grunt)->
 
 
 	grunt.registerTask 'default', 'simple-watch'
-	grunt.registerTask 'index_app', ['less_imports', 'less:prod', 'replace', 'concat:index_app']
+	grunt.registerTask 'index_app', ['less_imports', 'less:prod',
+									 'replace', 'concat:index_app']

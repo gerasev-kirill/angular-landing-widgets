@@ -14,6 +14,7 @@ angular.module 'IndexApp', ['gettext', 'ui.bootstrap','ui.gettext.langPicker', '
          $scope.$langPickerConf = $langPickerConf
          $scope.LANG = ''
          $scope.slides = []
+         $scope.marker = [48.464717,35.046183]
          for i in [1,2,3,4]
              $scope.slides.push({
                  image: 'http://lorempixel.com/'+(900+i)+'/400',
