@@ -16,7 +16,19 @@ block app_js
 
 block body
     br
-    div.text-center(ng-controller="Ctrl")    
+    div.text-center(ng-controller="Ctrl")  
+        h1 Landing Widgets
+        lw-googlemap-marker(marker="marker", title="Hello You!", style="height:25em;")    
+        br
+        lw-expand-area(title="Expand me!")
+            h1 hello
+            p you
+            b again  
+        lw-expand-area(title="Expand me2!", btn-class="primary")
+            h1 hello
+            p you2
+            b again
+        br
         lw-about-monitor-slider(slides="slides", hide-indicators="true", style="display:inline-block;")
         lw-features-block.lg-5-col.md-4-col.sm-2-col.xs-1-col(headline="hello Headline")
             each value in [1,2,3,4,5,6,7]
@@ -26,17 +38,9 @@ block body
                         span= value
                     a.text-primary(href="#") Learn more
                     
-        lw-googlemap-marker(marker="marker", title="Hello You!", style="height:25em;")
-
-        lw-expand-area(title="Expand me!")
-            h1 hello
-            p you
-            b again
+        
             
-        lw-expand-area(title="Expand me!", btn-class="primary")
-            h1 hello
-            p you
-            b again
+        
         lw-reviews-block.lg-3-col.md-3-col.sm-2-col.xs-1-col(headline="People said...",
                 show-top-controls="true")
             page(ng-show="$parent.currentPage==0")
