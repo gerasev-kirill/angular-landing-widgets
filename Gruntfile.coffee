@@ -14,8 +14,8 @@ module.exports = (grunt)->
 
 
 	grunt.initConfig {
-		pkg: grunt.file.readJSON('package.json'),
-		replace: {
+		pkg: grunt.file.readJSON('package.json')
+		replace:
 			options:{},
 			files:{
 					expand: true,
@@ -23,8 +23,7 @@ module.exports = (grunt)->
 					src: ['**/*.js', '**/*.html'],
 					dest: 'client',
 				}
-		},
-		tags: {
+		tags:
 			build: {
 				options: {
 					scriptTemplate: '<script src="/{{ path }}"></script>',
@@ -34,15 +33,13 @@ module.exports = (grunt)->
 				src: generateFilePattern(index_app),
 				dest: 'views/index.jade'
 			}
-		},
-		less_imports:{
+		less_imports:
 				options:{},
 				client:{
 					src: [ 'client/*_app/**/style.less'],
 					dest: 'client/auto_imports.less'
 				}
-		},
-		watch:{
+		watch:
 			js_html:{
 					files: ['client/*_app/**/*.js', 'client/*_app/**/*.html' ],
 					tasks: ['replace', 'tags']
@@ -51,8 +48,7 @@ module.exports = (grunt)->
 					files: ['client/*_app/**/*.less', 'client/*.less' ],
 					tasks: ['less_imports', 'less:prod']
 			}
-		},
-		coffee:{
+		coffee:
 			glob_to_multiple: {
 				expand: true,
 				cwd: 'client',
@@ -60,9 +56,8 @@ module.exports = (grunt)->
 				dest: 'client',
 				ext: '.js'
 			}
-		},
 		# pug == jade templates
-		pug:{
+		pug:
 			views:{
 				files: [{
 					expand: true,
@@ -81,8 +76,7 @@ module.exports = (grunt)->
 					ext: '.html'
 				}]
 			},
-		},
-		concat:{
+		concat:
 			options:{
 				separator:';\n'
 			},
@@ -90,8 +84,7 @@ module.exports = (grunt)->
 				src: generateFilePattern(index_app)
 				dest:'client/index_app.js'
 			}
-		}
-		less:{
+		less:
 			prod:{
 				options:{
 					#compress:true
@@ -102,8 +95,7 @@ module.exports = (grunt)->
 					#'client/css/style-moderator.css':'client/style-moderator.less'
 				}
 			}
-		}
-		wiredep: {
+		wiredep:
 			task: {
 				src: [
 					'views/**/*.jade'
@@ -116,26 +108,13 @@ module.exports = (grunt)->
 						devDependencies: false,
 					}
 			}
-		},
-		connect:{
-			server:{
-				options:{
-					port:8000,
-					hostname: 'localhost',
-					base: ['views', './'],
-					keepalive: true
-				}
-			}
-		},
-
-		nggettext_extract: {
+		nggettext_extract:
 			pot: {
 				files: {
 					'po/template.pot': ['views/**/*.html', 'client/**/*.html']
 				}
 			},
-		},
-		nggettext_compile: {
+		nggettext_compile:
 			lazy: {
 				options: {
 					format: "json"
@@ -151,10 +130,7 @@ module.exports = (grunt)->
 					}
 				]
 			}
-		},
-
 	}
-	grunt.loadNpmTasks 'grunt-contrib-connect'
 	grunt.loadNpmTasks 'grunt-script-link-tags'
 	grunt.loadNpmTasks 'grunt-replace'
 	grunt.loadNpmTasks 'grunt-wiredep'
@@ -165,10 +141,18 @@ module.exports = (grunt)->
 	grunt.loadNpmTasks 'grunt-contrib-pug'
 
 	grunt.loadNpmTasks 'grunt-angular-gettext'
-	grunt.registerTask 'po', ['pug:views', 'pug:client', 'nggettext_extract']
+	grunt.registerTask 'po', [
+			'pug:views',
+			'pug:client',
+			'nggettext_extract'
+	]
 	grunt.registerTask 'po-compile', 'nggettext_compile:lazy'
 
 
 	grunt.registerTask 'default', 'simple-watch'
-	grunt.registerTask 'index_app', ['less_imports', 'less:prod',
-									 'replace', 'concat:index_app']
+	grunt.registerTask 'index_app', [
+			'less_imports',
+			'less:prod',
+			'replace',
+			'concat:index_app'
+	]
