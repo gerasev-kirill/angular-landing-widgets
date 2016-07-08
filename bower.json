@@ -1,8 +1,12 @@
 {
-  "name": "landing_widgets",
+  "name": "angular-landing-widgets",
   "version": "1.0.0",
   "authors": [],
   "license": "MIT",
+  "main":[
+    "dist/lw.min.js",
+    "dist/style.less"
+  ],
   "ignore": [
     "**/.*",
     "node_modules",
@@ -13,10 +17,6 @@
   "dependencies": {
     "angular-bootstrap": "~1.3.2",
     "bootstrap": "~3.3.6",
-    "angular-ui-router": "~0.2.18",
-    "angular-gettext": "~2.2.1",
-    "ui-flags": "https://github.com/gerasev-kirill/ui-flags.git#~0.0.4",
-    "ui.gettext.lang.picker": "https://github.com/gerasev-kirill/angular-gettext-lang-picker.git",
     "angular-animate": "~1.5.3"
   },
   "overrides": {
@@ -39,6 +39,10 @@
     }
   },
   "devDependencies": {
-    "less.js": "~2.6.1"
+    "less.js": "~2.6.1",
+    "angular-ui-router": "~0.2.18",
+    "angular-gettext": "~2.2.1",
+    "ui-flags": "https://github.com/gerasev-kirill/ui-flags.git#~0.0.4",
+    "ui.gettext.lang.picker": "https://github.com/gerasev-kirill/angular-gettext-lang-picker.git",
   }
 }

@@ -38,6 +38,18 @@ module.exports = (grunt)->
 				client:{
 					src: [ 'client/*_app/**/style.less'],
 					dest: 'client/auto_imports.less'
+				},
+				landing_widgets:{
+					src: (()->
+						grunt.file.copy('client/quote.png', 'dist/quote.png')
+						[
+							'bower_components/bootstrap/less/bootstrap.less',
+							'client/landing_widgets_app/**/style.less',
+							'client/animations.less'
+						]
+						)()
+					,
+					dest: 'dist/auto_imports.less'
 				}
 		watch:
 			js_html:{
@@ -83,16 +95,35 @@ module.exports = (grunt)->
 			index_app:{
 				src: generateFilePattern(index_app)
 				dest:'client/index_app.js'
-			}
+			},
+			landing_widgets_app:{
+				src: generateFilePattern(['landing_widgets_app']),
+				dest: 'client/landing_widgets_app.js'
+			},
+			landing_widgets_app_less:{
+				options:{
+					separator:''
+				}
+				src: ['client/landing_widgets_app/**/*.less'],
+				dest: 'dist/style.less'
+			},
 		less:
 			prod:{
 				options:{
 					#compress:true
 				},
 				files:{
-					'client/style.css':'client/style.less',
+					'client/style.css':'client/style.less'
 					#'client/css/style-admin.css':'client/style-admin.less',
 					#'client/css/style-moderator.css':'client/style-moderator.less'
+				}
+			}
+			dist:{
+				options:{
+					compress:true
+				},
+				files:{
+					'dist/style.css': ['dist/auto_imports.less']
 				}
 			}
 		wiredep:
@@ -130,6 +161,22 @@ module.exports = (grunt)->
 					}
 				]
 			}
+		uglify:
+			dist:{
+				files:{
+					'dist/lw.min.js':['client/landing_widgets_app.js']
+				}
+			}
+		angular_template_inline_js:
+			options:{
+				basePath: __dirname
+			},
+			files:{
+				cwd: 'client',
+				expand: true,
+				src: ['*.js'],
+				dest: 'client'
+			}
 	}
 	grunt.loadNpmTasks 'grunt-script-link-tags'
 	grunt.loadNpmTasks 'grunt-replace'
@@ -139,6 +186,8 @@ module.exports = (grunt)->
 	grunt.loadNpmTasks 'grunt-simple-watch'
 	grunt.loadNpmTasks 'grunt-less-imports'
 	grunt.loadNpmTasks 'grunt-contrib-pug'
+	grunt.loadNpmTasks 'grunt-contrib-uglify'
+	grunt.loadNpmTasks 'grunt-angular-template-inline-js'
 
 	grunt.loadNpmTasks 'grunt-angular-gettext'
 	grunt.registerTask 'po', [
@@ -155,4 +204,13 @@ module.exports = (grunt)->
 			'less:prod',
 			'replace',
 			'concat:index_app'
+	]
+	grunt.registerTask 'dist', [
+		'less_imports:landing_widgets',
+		'less:dist',
+		'replace',
+		'concat:landing_widgets_app',
+		'angular_template_inline_js',
+		'uglify:dist',
+		'concat:landing_widgets_app_less'
 	]

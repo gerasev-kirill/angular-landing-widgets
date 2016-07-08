@@ -1,0 +1,10 @@
+.*
+node_modules
+bower_components
+*.html
+*.css
+*.js
+ap2
+*.mo
+!.gitignore
+auto_imports*
