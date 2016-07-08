@@ -43,6 +43,6 @@
     "angular-ui-router": "~0.2.18",
     "angular-gettext": "~2.2.1",
     "ui-flags": "https://github.com/gerasev-kirill/ui-flags.git#~0.0.4",
-    "ui.gettext.lang.picker": "https://github.com/gerasev-kirill/angular-gettext-lang-picker.git",
+    "ui.gettext.lang.picker": "https://github.com/gerasev-kirill/angular-gettext-lang-picker.git"
   }
 }
