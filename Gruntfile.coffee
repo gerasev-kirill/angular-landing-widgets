@@ -177,6 +177,13 @@ module.exports = (grunt)->
 				src: ['*.js'],
 				dest: 'client'
 			}
+		ngAnnotate:
+			files:{
+				cwd: 'client',
+				expand: true,
+				src: ['*.js'],
+				dest: 'client'
+			}
 	}
 	grunt.loadNpmTasks 'grunt-script-link-tags'
 	grunt.loadNpmTasks 'grunt-replace'
@@ -188,6 +195,7 @@ module.exports = (grunt)->
 	grunt.loadNpmTasks 'grunt-contrib-pug'
 	grunt.loadNpmTasks 'grunt-contrib-uglify'
 	grunt.loadNpmTasks 'grunt-angular-template-inline-js'
+	grunt.loadNpmTasks 'grunt-ng-annotate'
 
 	grunt.loadNpmTasks 'grunt-angular-gettext'
 	grunt.registerTask 'po', [
@@ -210,6 +218,7 @@ module.exports = (grunt)->
 		'less:dist',
 		'replace',
 		'concat:landing_widgets_app',
+		'ngAnnotate',
 		'angular_template_inline_js',
 		'uglify:dist',
 		'concat:landing_widgets_app_less'

@@ -8,7 +8,8 @@
   "dependencies": {
     "grunt": "^0.4.5",
     "grunt-angular-template-inline-js": "^0.1.1",
-    "grunt-contrib-uglify": "^1.0.1"
+    "grunt-contrib-uglify": "^1.0.1",
+    "grunt-ng-annotate": "^2.0.2"
   },
   "devDependencies": {
     "angular-template-inline-js": "^0.1.6",
