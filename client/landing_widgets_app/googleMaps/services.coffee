@@ -28,7 +28,7 @@ angular.module 'ui.landingWidgets'
         if not @_added_to_head and not @loaded
             @_callbacks.push(cb)
             script = document.createElement('script')
-            script.src = "https://maps.googleapis.com/maps/api/js?sensor=false&callback=window.lwGooglemapInitMap"
+            script.src = "https://maps.googleapis.com/maps/api/js?key=AIzaSyDqPnzSiMCuFXwOe28LeNC4ZUSHzWxM31k&sensor=false&callback=window.lwGooglemapInitMap"
             script.type = "text/javascript"
             document.getElementsByTagName('head')[0].appendChild(script)
             @_added_to_head = true
